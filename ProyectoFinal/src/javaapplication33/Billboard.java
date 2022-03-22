@@ -2,13 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package javaapplication33;
+package FinalProject;
+
 import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
- * @author Personal
+ * @author fundacion
  */
-public class Billboard {
+public class Billboard { 
     String[] showTime = {"Afternon","Evening", "Night"};
     public ArrayList<Movie> movies;
     String billboardTitle;
@@ -19,6 +22,9 @@ public class Billboard {
     }
         
     public String getBillboardTitle() {
+        System.out.println("Write a name for your Billboard");
+        Scanner input = new Scanner(System.in);
+        billboardTitle = input.nextLine();
         return billboardTitle;
     }
         
@@ -45,6 +51,7 @@ public class Billboard {
     public void showMovies() {
         for (int i = 0; i < movies.size(); i++) {
             Movie movie = movies.get(i);
+            System.out.println("Movie: " + (i + 1)); //
             System.out.println("Title: " + movie.getTitle());
             System.out.println("Genre: " + movie.getGenre());
             System.out.println("Synopsis: " + movie.getSynopsis());
@@ -53,6 +60,7 @@ public class Billboard {
             System.out.println("Classify: " + movie.getClassify());
             System.out.println("Duration: " + movie.getDuration());
             System.out.println("Year: " + movie.getYear());
+            System.out.println(""); //
         }
     }    
     
@@ -72,9 +80,9 @@ public class Billboard {
         } else if (criteria == "Classify"){
             isSame = parameter == movie.getClassify();
         } else if (criteria == "Duration"){
-            isSame = Double.parseDouble(parameter) == movie.getDuration();
+            isSame = parameter == movie.getDuration();
         } else if (criteria == "Year"){
-            isSame = Integer.parseInt(parameter) == movie.getYear();
+            isSame = parameter == movie.getYear();
         } else {
             isSame = false;
         }

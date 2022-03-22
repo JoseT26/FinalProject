@@ -2,24 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package javaapplication33;
+package FinalProject;
 
 /**
  *
- * @author Personal
+ * @author fundacion
  */
 public class Movie {
-     public String title;
+    public String title;
     public String genre;
     public String synopsis;
     public String language;
     public String director;
     public String classify;
-    public double duration;
-    public int year;
+    public String duration;
+    public String year;
     public boolean isActive;
     
-    public Movie(String title, String genre, String synopsis, String language, String director, String classify, double duration, int year, boolean isActive) {
+    public Movie(String title, String genre, String synopsis, String language, String director, String classify, String duration, String year) {
         this.title = title;
         this.genre = genre;
         this.synopsis = synopsis;
@@ -59,11 +59,11 @@ public class Movie {
         return classify;
     }
     
-    public double getDuration() {
+    public String getDuration() {
         return duration;
     }
     
-    public int getYear() {
+    public String getYear() {
         return year;
     } 
     
@@ -77,7 +77,6 @@ public class Movie {
                 + "Director: " + director + "\n "
                 + "Classify: " + classify + "\n "
                 + "Duration: " + duration + "\n "
-                + "Year: " + year + "\n "
-                + "isActive: " + isActive;
+                + "Year: " + year;
     }  
 }
