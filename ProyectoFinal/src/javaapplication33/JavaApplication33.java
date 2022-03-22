@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package javaapplication33;
-
+import java.util.Scanner;
 /**
  *
  * @author Personal
@@ -14,22 +14,51 @@ public class JavaApplication33 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Usser cliente1 = new Usser("default", "default", "default");
-        cliente1.getName();
-        cliente1.getUserName();
-        cliente1.getPassword();
-        System.out.println(cliente1.name);
-        System.out.println(cliente1.userName);
-        System.out.println(cliente1.password);
-        Admin admin1 = new Admin("default", "default", "default", "default");
-        admin1.getName();
-        admin1.getUserName();
-        admin1.getPassword();
-        admin1.getCodeAdmin();
-        System.out.println(admin1.name);
-        System.out.println(admin1.userName);
-        System.out.println(admin1.password);
-        System.out.println(admin1.codeAdmin);
+        registrarse();
+        menu();
     }
     
+    public static void registrarse(){
+       boolean valid = false;
+        do{
+        System.out.println("Registrese para comenza:");
+        System.out.println("1. Usario  2. Administrador");
+        Scanner input = new Scanner(System.in);
+        String option = input.nextLine();
+        if(option.equals("1")){
+           Usser usser1 = new Usser("", "", "");
+           usser1.getName();
+           usser1.getUserName();
+           usser1.getPassword();
+           valid = false;
+        }
+        else if(option.equals("2")){
+           Admin admin1 = new Admin("", "", "", "");
+           admin1.getName();
+           admin1.getUserName();
+           admin1.getPassword();
+           admin1.getCodeAdmin();
+           valid = false;
+        }
+        else{
+           System.out.println("Opcion no valida");
+           valid = true;
+       }
+       }while(valid);
+    }
+    public static void menu(){
+        System.out.println("Elija una opcion: ");
+        System.out.println("1. Mostrar cartelera");
+        System.out.println("2. Reservacion");
+        System.out.println("3. Retos");
+        System.out.println("4. Salir");
+        
+        Scanner input = new Scanner(System.in);
+        String option = input.nextLine();
+        
+        if(option.equals("1")){
+            Billboard bill = new Billboard("");
+            bill.showMovies();   
+        }
+    }
 }

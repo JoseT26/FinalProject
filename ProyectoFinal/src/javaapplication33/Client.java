@@ -1,7 +1,7 @@
 package javaapplication33;
 
 import java.util.Scanner;
-
+// funciona
 public class Client {
     String name;
     String userName;

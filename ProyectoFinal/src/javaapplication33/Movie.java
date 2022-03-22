@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ProyectoFinal;
+package javaapplication33;
 
 /**
  *
- * @author Jose Luis
+ * @author Personal
  */
 public class Movie {
-    public String title;
+     public String title;
     public String genre;
     public String synopsis;
     public String language;
@@ -65,5 +65,19 @@ public class Movie {
     
     public int getYear() {
         return year;
+    } 
+    
+    // Could have changes
+    @Override
+    public String toString() {
+        return " " + "Title: " + title + "\n " 
+                + "Genre: " + genre + "\n "
+                + "Synopsis: " + synopsis + "\n "
+                + "Language: " + language + "\n "
+                + "Director: " + director + "\n "
+                + "Classify: " + classify + "\n "
+                + "Duration: " + duration + "\n "
+                + "Year: " + year + "\n "
+                + "isActive: " + isActive;
     }  
 }

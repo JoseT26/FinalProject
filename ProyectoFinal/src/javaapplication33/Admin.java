@@ -1,7 +1,7 @@
 package javaapplication33;
 
 import java.util.Scanner;
-
+//Funciona
 public class Admin extends Client {
     String codeAdmin;
 
