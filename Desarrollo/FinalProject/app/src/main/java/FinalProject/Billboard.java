@@ -24,6 +24,7 @@ public class Billboard {
     public String getBillboardTitle() {
         System.out.println("Write a name for your Billboard");
         Scanner input = new Scanner(System.in);
+        System.out.print("Name: ");
         billboardTitle = input.nextLine();
         return billboardTitle;
     }
@@ -98,7 +99,61 @@ public class Billboard {
                 System.out.println("Movie: " + actualMovie.getTitle());
             }
         } 
-    } 
+    }
+    
+    public static void billboardMenu() {
+        int ans;
+        Movie movie1 = new Movie("Spidermann", "Acción" , "Vida de un Superheroe", "Español", "Sam Raimi", "General", "2 hrs", "2004");
+        Movie movie2 = new Movie("Spidermann 2", "Acción" , "Vida de un Superheroe", "Español", "Sam Raimi", "General", "2:30 hrs", "2006");
+        Movie movie3 = new Movie("Spidermann 3", "Acción" , "Vida de un Superheroe", "Español", "Sam Raimi", "General", "2 hrs", "2008");
+        
+        Billboard billboard1 = new Billboard("");
+        
+        billboard1.addMovie(movie3);
+        
+        do {
+            System.out.println("Choose an option: ");
+            System.out.println("1. Watch movies in Billboard");
+            System.out.println("2. Numbers of movies in Billboard");
+            System.out.println("3. Add some movie");
+            System.out.println("4. Search a movie by position");
+            System.out.println("5. Search a movie by criteria");
+            System.out.println("6. Exit");
+
+            Scanner in = new Scanner(System.in);
+            System.out.print("Option: ");
+            ans = in.nextInt();
+            
+            while (ans < 1 || ans > 5) {
+                System.out.println("That is not an option");
+                System.out.println("");
+                System.out.println("Choose an option: ");
+                System.out.println("1. Watch movies in Billboard");
+                System.out.println("2. Numbers of movies in Billboard");
+                System.out.println("3. Add some movie");
+                System.out.println("4. Search a movie by position");
+                System.out.println("5. Search a movie by criteria");
+                System.out.println("6. Exit");
+                System.out.print("Option: ");
+                ans = in.nextInt();
+            }
+
+            if ("1".equals(ans)) {
+                billboard1.showMovies();
+            } else if ("2".equals(ans)) {
+                billboard1.getNumberMovies();
+            } else if ("3".equals(ans)) {
+                billboard1.addMovie(movie3);
+            } else if ("4".equals(ans)) {
+                billboard1.eliminateMovie(movie3);
+            } else if ("5".equals(ans)) {
+                billboard1.searchMovieCriteria("", "");
+            } else {
+                System.out.println("Take Care!");
+                break;
+            }
+        } while (ans >= 1 && ans < 5);
+    }
     
     // Could have changes
     @Override
