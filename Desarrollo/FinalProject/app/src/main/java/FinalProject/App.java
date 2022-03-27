@@ -59,6 +59,15 @@ public class App {
         // billboard1.addMovie(movie2);
         // billboard1.addMovie(movie3);
         
+        Movie movie1 = new Movie("Spidermann", "Acción" , "Vida de un Superheroe", "Español", "Sam Raimi", "General", "2 hrs", "2004");
+        Movie movie2 = new Movie("Spidermann 2", "Acción" , "Vida de un Superheroe", "Español", "Sam Raimi", "General", "2:30 hrs", "2006");
+        Movie movie3 = new Movie("Spidermann 3", "Acción" , "Vida de un Superheroe", "Español", "Sam Raimi", "General", "2 hrs", "2008");
+
+        Billboard billboard1 = new Billboard("");
+        billboard1.addMovie(movie1);
+        billboard1.addMovie(movie2);
+        billboard1.addMovie(movie3);
+        
         Gamificacion gam1= new Gamificacion();
         
         do {
@@ -85,7 +94,52 @@ public class App {
             }    
 
             if (option == 1) {
-                // billboardMenu();
+                int ans;
+                
+                do {
+                    System.out.println("Choose an option: ");
+                    System.out.println("1. Watch movies in Billboard");
+                    System.out.println("2. Numbers of movies in Billboard");
+                    System.out.println("3. Add some movie");
+                    System.out.println("4. Search a movie by position");
+                    System.out.println("5. Search a movie by criteria");
+                    System.out.println("6. Exit");
+
+                    Scanner in = new Scanner(System.in);
+                    System.out.print("Option: ");
+                    ans = in.nextInt();
+
+                    while (ans < 1 || ans > 5) {
+                        System.out.println("That is not an option");
+                        System.out.println("");
+                        System.out.println("Choose an option: ");
+                        System.out.println("1. Watch movies in Billboard");
+                        System.out.println("2. Numbers of movies in Billboard");
+                        System.out.println("3. Add some movie");
+                        System.out.println("4. Search a movie by position");
+                        System.out.println("5. Search a movie by criteria");
+                        System.out.println("6. Exit");
+                        System.out.print("Option: ");
+                        ans = in.nextInt();
+                    }
+
+                    if (ans == 1) {
+                        billboard1.getBillboardTitle();
+                        billboard1.showMovies();
+                    } else if (ans == 2) {
+                        // billboard1.getNumberMovies();
+                    } else if (ans == 3) {
+                        // billboard1.addMovie(movie3);
+                    } else if (ans == 4) {
+                        // billboard1.eliminateMovie(movie3);
+                    } else if (ans == 5) {
+                        // billboard1.searchMovieCriteria("", "");
+                    } else {
+                        System.out.println("Take Care!");
+                        break;
+                    }
+                } while (ans >= 1 && ans < 5);
+                
             } else if (option == 2) {
                 Reservations reser = new Reservations("", "", "");
                 reser.getUser();
