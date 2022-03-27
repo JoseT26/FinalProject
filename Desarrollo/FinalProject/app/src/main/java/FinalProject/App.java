@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        registrarse();
+        // registrarse();
         menu();
     }
     
@@ -29,12 +29,14 @@ public class App {
                 usser1.getName();
                 usser1.getUserName();
                 usser1.getPassword();
+                break;
             } else if ("2".equals(option)) {
                 Admin admin1 = new Admin ("", "", "", "");
                 admin1.getName();
                 admin1.getUserName();
                 admin1.getPassword();
                 admin1.getCodeAdmin();
+                break;
             } else {
                 System.out.println("That is not an option");
                 valid = true;
@@ -44,20 +46,20 @@ public class App {
     
     public static void menu() {
         int option;
-        // String answer = "";
+        boolean active = false;
         
         // This will have changes, in orden to be cycle
         // It only to prove
-        Movie movie1 = new Movie("Spidermann", "Acción" , "Vida de un Superheroe", "Español", "Sam Raimi", "General", "2 hrs", "2004");
-        Movie movie2 = new Movie("Spidermann 2", "Acción" , "Vida de un Superheroe", "Español", "Sam Raimi", "General", "2:30 hrs", "2006");
-        Movie movie3 = new Movie("Spidermann 3", "Acción" , "Vida de un Superheroe", "Español", "Sam Raimi", "General", "2 hrs", "2008");
+        // Movie movie1 = new Movie("Spidermann", "Acción" , "Vida de un Superheroe", "Español", "Sam Raimi", "General", "2 hrs", "2004");
+        // Movie movie2 = new Movie("Spidermann 2", "Acción" , "Vida de un Superheroe", "Español", "Sam Raimi", "General", "2:30 hrs", "2006");
+        // Movie movie3 = new Movie("Spidermann 3", "Acción" , "Vida de un Superheroe", "Español", "Sam Raimi", "General", "2 hrs", "2008");
         
-        Billboard billboard1 = new Billboard("");
-        billboard1.addMovie(movie1);
-        billboard1.addMovie(movie2);
-        billboard1.addMovie(movie3);
-        Gamificacion gami = new Gamificacion();
-       
+        // Billboard billboard1 = new Billboard("");
+        // billboard1.addMovie(movie1);
+        // billboard1.addMovie(movie2);
+        // billboard1.addMovie(movie3);
+        
+        Gamificacion gam1= new Gamificacion();
         
         do {
             System.out.println("To continue, choose an option");
@@ -83,21 +85,21 @@ public class App {
             }    
 
             if (option == 1) {
-                billboard1.getBillboardTitle();
-                billboard1.showMovies();
+                // billboardMenu();
             } else if (option == 2) {
-                
-
+                Reservations reser = new Reservations("", "", "");
+                reser.getUser();
+                reser.getUserName();
+                reser.getPassword();
+                reser.Ticket();
+                // reser.reserve();
             } else if (option == 3) {
-                gami.gamificacionMenu();
-                //gami.challenges();
-                
-
+                gam1.gamificacionMenu();
             } else {
                 System.out.println("Take Care!");
-                break;
+                active = false;
             } 
-        } while (option >= 1 && option < 4);
+        } while (active);
     } 
 }
 
