@@ -12,145 +12,194 @@ import java.util.Scanner;
  */
 
 public class Gamificacion {
-    int limite = 0;
-    int puntos = 0;
-    String retos;
-    String premios;
+    int limit = 0;
+    int points = 0;
+    String challenge;
     int ind= 0 ;
-    String [] reto = new String [7];
+    String [] challenges = new String [7];
   public int random(){
         int random = (int)(Math.random()*(3 - 0));
         return random;
     }
     public String retos(){
         String ans="";
-        if(limite > 4){
-            ans = "Ha llegado al limite de retos, termine los retos asignados para tomar uno nuevo";
+        if(limit > 4){
+            ans = "You have reached the limit of challenges, finish the assigned challenges to take a new one";
             System.out.println(ans);
         }else{
         int random = (int)(Math.random()*8+1);
+        int num;
         switch(random){
             case 1:
-                ans = "Ver una pelicula de terror";
-                reto[ind] = ans;
+                ans = "To watch a horror movie";
+                num = ind;
+                challenges[ind] = ans + " /challenge number: " + num;
                 System.out.println(ans);
                 ind ++;
-                limite ++;
+                limit ++;
                 break;
             case 2:
-                ans = "Comentar en cuatro peliculas";
-                reto[ind] = ans;
+                ans = "Comment four movies";
+                num = ind;
+                challenges[ind] = ans + " /challenge number: " + num;
                 System.out.println(ans);
                 ind ++;
-                limite ++;
+                limit ++;
                 break;
             case 3:
-                ans = "Ver dos peliculas de comedia";
-                reto[ind] = ans;
+                ans = "To watch two comedy movies";
+                num = ind;
+                challenges[ind] = ans + " /challenge number: " + num;
                 System.out.println(ans);
                 ind ++;
-                limite ++;
+                limit ++;
                 break;
             case 4:
-                ans = "ver una pelicula de accion";
-                reto[ind] = ans;
+                ans = "To watch a action movie";
+                num = ind;
+                challenges[ind] = ans + " /challenge number: " + num;
                 System.out.println(ans);
                 ind ++;
-                limite ++;
+                limit ++;
                 break;
             case 5:
-                ans = "ver dos peliculas de accion";
-                reto[ind] = ans;
+                ans = "to watch two action movies";
+                num = ind;
+                challenges[ind] = ans + " /challenge number: " + num;
                 System.out.println(ans);
                 ind ++;
-                limite ++;
+                limit ++;
                 break;
             case 6:
-                ans = "ver una pelicula en ingles";
-                reto[ind] = ans;
+                ans = "To watch a movie in english";
+                num = ind;
+                challenges[ind] = ans + " /challenge number: " + num;
                 System.out.println(ans);
                 ind ++;
-                limite ++;
+                limit ++;
                 break;
             case 7:
-                ans = "ver una pelicula subtitulada en ingles";
-                reto[ind] = ans;
+                ans = "Watch a movie subtitled in english";
+                num = ind;
+                challenges[ind] = ans + " /challenge number: " + num;
                 System.out.println(ans);
                 ind ++;
-                limite ++;
+                limit ++;
                 break;
             case 8:
-                ans = "ver una pelicula de drama";
-                reto[ind] = ans;
+                ans = "To watch a drama movie";
+                num = ind;
+                challenges[ind] = ans + " /challenge number: " + num;
                 System.out.println(ans);
-                limite ++;
+                limit ++;
                 ind ++;
                 break;
             default:
-                ans = "ver tres pelicutlas";
-                reto[ind] = ans;
+
+                ans = "To watch three movies";
+                num = ind;
+                challenges[ind] = ans + " /challenge number: " + num;
                 System.out.println(ans);
                 ind ++;
-                limite ++;
+                limit ++;
         }
         }
         return ans;
     }
-    public void gamificacionMenu(){
+       public void gamificacionMenu(){
         boolean exit = false;
         do{
-        System.out.println("Elija una opcion: ");
-        System.out.println("1. Tomar un reto");
-        System.out.println("2. Ver mis retos");
-        System.out.println("3. terminar un reto");
-        System.out.println("4. Salir");
+        System.out.println("Choose an option: ");
+        System.out.println("1. Take a challenge");
+        System.out.println("2. See all chosen challenges");
+        System.out.println("3. Finish a challenge");
+        System.out.println("4. Exit");
         
         Scanner input = new Scanner(System.in);
         String option = input.nextLine();
-        if(option.equals("1")){
-            retos();
-            exit = true;
-        }else{ 
-            if(option.equals("2")){
-                imprimir();
+        switch(option){
+            case "1":
+                if(option.equals("1")){
+                retos();
                 exit = true;
-            }
+                }
+            case "2":
+                if(option.equals("2")){
+                    imprimir();
+                    exit = true;
+                }
+            case "3":
             if(option.equals("3")){
                 try{
-                    System.out.println("Selecciona por orden empezando desde 0, el numero del reto que terminaste");
+                    System.out.println("Select in order starting from 0, the number of the challenge you finished");
                     Scanner in = new Scanner(System.in);
                     String opt = in.nextLine();
                     int num = Integer. parseInt(opt);
-                     if(num <reto.length){
+                     if(num <challenges.length){
                     terminarReto(num);
                     }else{
-                    System.out.println("Ingrese un valor valido por favor");
+                    System.out.println("Enter a valid value please");
                     }
+                     if(points == 30){
+                         System.out.println("Congratulations, you have won a ROOKIE trophy.");
+                     }
+                     if(points == 50){
+                         System.out.println("Congratulations, you have won a INITIATED trophy.");
+                     }
+                     if(points == 70){
+                         System.out.println("Congratulations, you have won a VETERAN trophy.");
+                     }
                     exit = true;
                 }catch(Exception e){
                     System.out.println("Enter a number please");
                 }
             }
-            if(option.equals("4")){
-                exit = false;
-            }else{
-                System.out.println("Ingrese un valor valido");
-                exit = true;
-            }    
-        }
+            case "4":
+                if(option.equals("4")){
+                    exit = false;
+            }
+            default:
+            }   
         }while(exit);
     }
     public void imprimir(){
-        for(int i = 0; i < reto.length;i++){
-            if(reto[i] != null){
-                System.out.println(reto[i]);
+        int contnu = 0;
+        for(int i = 0; i < challenges.length;i++){
+            if(challenges[i] != null){
+                System.out.println(challenges[i]);
+            }
+            if(challenges[i] == null){
+                contnu ++;
+                if(contnu == 7){
+                    System.out.println("** There are no challenge in the list **");
+                }
             }
         }
     }
-    public void terminarReto(int ind){
-        reto[ind] = null;
-        limite --;
-        System.out.println("Felicidades, terminaste un reto");
-        puntos += 10;
+       public void terminarReto(int ind){
+        if(challenges[ind] == null){
+            System.out.println("there are no challenge in this position: " + ind);
+        }
+        if(empty() == true){
+            System.out.println("** There are no challenges in the list **");
+        }else{
+            challenges[ind] = null;
+            limit --;
+            System.out.println("Congratulations, you finished a challenge");
+            points += 10;
+        }
+    }
+    public boolean empty(){
+        int contnu=0;
+        boolean emp = false;
+         for(int i = 0; i < challenges.length;i++){
+              if(challenges[i] == null){
+                contnu ++;
+                if(contnu == 7){
+                    emp = true;
+                }
+            }
+        }
+         return emp;
     }
 }

@@ -51,7 +51,7 @@ public class Reservations {
     
     public char[] Ticket() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Escriba su asiento para reservar entre A1-A7 y H1-H7");
+        System.out.println("Write your seat to reserve between A1-A7 and H1-H7");
         String ticket = input.nextLine();
         ticket = ticket.toUpperCase();
         //"se ingresa de A-H y un numero 1-7
@@ -63,28 +63,32 @@ public class Reservations {
     }
     
     public String[][] reserve(String[][] Seat) { //basicamente crea un "ticket" con toda la informacion del cliente     
-        char[] pos = Ticket();
-        Client cliente = new Client(username, user, password);
-        char[]abc = new char[26];
+        try{
+            char[] pos = Ticket();
+            Client cliente = new Client(username, user, password);
+            char[]abc = new char[26];
         
-        for (int i = 0; i < 26; i++) {
-            abc[i] = (char) ('A' + i );
-        }
-        int aux = 0;
-        
-        for (int i = 0; i < 26; i++) {
-            if (abc[i] == pos[0]) {
-                aux=  i;
-                break;
+            for (int i = 0; i < 26; i++) {
+                abc[i] = (char) ('A' + i );
             }
+            int aux = 0;
+        
+            for (int i = 0; i < 26; i++) {
+                if (abc[i] == pos[0]) {
+                    aux=  i;
+                    break;
+                }
+            }
+            asiento.asignarAsiento(aux, Character.getNumericValue(pos[1]), cliente.getName());
+        }catch(Exception e){
+            System.out.println("Select a valid seat please");
         }
-        asiento.asignarAsiento(aux, Character.getNumericValue(pos[1]), cliente.getName());
         return Seat;
     }
     public void reservationMenu(){
         boolean exit = false;
         do{
-        System.out.println("Elija una opcion: ");
+        System.out.println("Select a option: ");
         System.out.println("1. choose a seat");
         System.out.println("2. see the seats");
         System.out.println("3. exit");
@@ -98,12 +102,13 @@ public class Reservations {
             if(option.equals("2")){
                 asiento.imprimirAsientos();
                 exit = true;
-            }
-            if(option.equals("3")){
-                exit = false;
             }else{
-                System.out.println("Ingrese un valor valido");
-                exit = true;
+                if(option.equals("3")){
+                    exit = false;
+                }else{
+                    System.out.println("select a valid value");
+                    exit = true;
+                }
             }    
         }
         }while(exit);
