@@ -19,7 +19,7 @@ public class Gamificacion {
     int ind = 1;
     String challenge;
     String rewards;
-    String[] challenges = new String[7];
+    String[] challenges = new String[100];
     
     public int random() {
         int random = (int)(Math.random()*(3 - 0));
@@ -120,7 +120,7 @@ public class Gamificacion {
                 System.out.println("Challenge " + (i) + ": " + challenges[i] + "\n");
             } else if (challenges[i] == null) {
                 contnu ++;
-                if (contnu == 7) {
+                if (contnu == 100) {
                     System.out.println("** There are no challenges in the list **");
                 }
             }
@@ -131,10 +131,10 @@ public class Gamificacion {
         int contnu = 0;
         boolean emp = false;
         
-        for (int i = 0; i < challenges.length;i++) {
+        for (int i = 0; i < challenges.length; i++) {
             if (challenges[i] == null) {
                 contnu ++;
-                if (contnu == 7) {
+                if (contnu == 100) {
                     emp = true;
                 }
             }
@@ -144,7 +144,7 @@ public class Gamificacion {
     
     public void completeChallenge(int ind) {
         if (challenges[ind] == null) {
-            System.out.println("There are no challenges in this position: " + ind);
+            System.out.println("There are no challenges in this position: " + ind + "\n");
         } else if (empty() == true) {
             System.out.println("** There are no challenges in the list **");
         } else {
@@ -192,26 +192,26 @@ public class Gamificacion {
                         if (num < challenges.length) {
                             completeChallenge(num);
                         } else {
-                            System.out.println("That is not an option");
+                            System.out.println("That is not an option \n");
                         } 
                         
                         if (points == 30) {
-                            System.out.println("Congratulations, you have won a ROOKIE trophy.");
+                            System.out.println("Congratulations, you have won a ROOKIE trophy. \n");
                         } else if (points == 50) {
-                            System.out.println("Congratulations, you have won a INITIATED trophy.");
+                            System.out.println("Congratulations, you have won a INITIATED trophy. \n");
                         } else if (points == 70) {
-                            System.out.println("Congratulations, you have won a VETERAN trophy.");
+                            System.out.println("Congratulations, you have won a VETERAN trophy. \n");
                         }
                         exit = true;
                     } catch (NumberFormatException e) {
-                        System.out.println("Enter a number please");
+                        System.out.println("Enter a number please! \n");
                     }   break;
                 case "4":
                     exit = false;
                     administratorMenu();
                     userMenu();
                 default:
-                    System.out.println("That is not an option");
+                    System.out.println("That is not an option \n");
                     exit = true;
                     break;
             }
