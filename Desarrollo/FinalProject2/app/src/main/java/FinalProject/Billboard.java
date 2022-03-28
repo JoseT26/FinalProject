@@ -72,7 +72,7 @@ public class Billboard {
                 System.out.println("Movie: " + movie.getTitle());
                 System.out.println(""); 
             } 
-        }
+        }  
     }
     
     public void showMovies() {
@@ -91,8 +91,32 @@ public class Billboard {
         }
     }
     
+    public boolean existMovie(String title) {
+        for (int i = 0; i < movies.size(); i++) {
+            Movie movie = movies.get(i);
+            String film = movie.getTitle();
+            
+            if (film.equals(title)) {
+                System.out.println("Title: " + movie.getTitle());
+                System.out.println("Director: " + movie.getDirector());
+                System.out.println("Year: " + movie.getYear());
+                return true;
+            }
+        }
+        return false;
+    }
+    
     //Could have changes
     public boolean compareCriteria(String criteria, String parameter, Movie movie) {
+        Scanner in = new Scanner(System.in);
+        String crit = criteria;
+        String para = parameter;
+        
+        System.out.println("Write the criteria");
+        crit = in.nextLine();
+        System.out.println("Write the parameter");
+        para = in.nextLine();
+        
         boolean isSame;
         if ("Title".equals(criteria)) {
             isSame = parameter == movie.getTitle();
@@ -123,7 +147,7 @@ public class Billboard {
             
             if (compareCriteria(criteria, parameter, actualMovie)) {
                 System.out.println("Position: " + i);
-                System.out.println("Movie: " + actualMovie.getTitle());
+                System.out.println("Movie: " + actualMovie.getTitle() + "\n");
             }
         } 
     }
