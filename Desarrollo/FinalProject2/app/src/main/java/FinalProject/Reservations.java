@@ -4,6 +4,7 @@
  */
 package FinalProject;
 
+import static FinalProject.App.menu;
 import java.util.Scanner;
 
 /**
@@ -109,8 +110,8 @@ public class Reservations {
                 System.out.println("");
                 exit = true;
             } else if (option.equals("3")) {
-                System.out.println("");
                 exit = false;
+                menu();
             } else {
                 System.out.println("Enter a valid value");
                 exit = true;
