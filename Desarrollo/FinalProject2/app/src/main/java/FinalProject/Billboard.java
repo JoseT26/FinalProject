@@ -5,6 +5,7 @@
 package FinalProject;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -15,15 +16,15 @@ public class Billboard {
     String[] showTime = {"Afternon","Evening", "Night"};
     public ArrayList<Movie> movies;
     String billboardTitle;
-        
+    
     public Billboard(String billboardTitle){
         this.billboardTitle = billboardTitle;
         movies = new ArrayList<Movie>();
     }
         
     public String getBillboardTitle() {
-        System.out.println("Write a name for your Billboard");
         Scanner input = new Scanner(System.in);
+        System.out.println("Write a name for your Billboard");
         System.out.print("Name: ");
         billboardTitle = input.nextLine();
         return billboardTitle;
@@ -38,16 +39,40 @@ public class Billboard {
     }
     
     public int getNumberMovies() {
-        System.out.println(movies.size());
+        System.out.println("There are " + movies.size() + " movies in Billboard");
         return movies.size();
     }
     
-    public String getMovieTitle(int indicator) {
-        if (indicator >= movies.size()) {
-            return null;
+    public void getMovieTitle(int indicator) {
+        Scanner in = new Scanner(System.in);
+        int num = indicator;
+                        
+        try {
+            if (num <= movies.size()) {
+                System.out.println("To search a movie, you need the position of that movie");
+                System.out.print("Position: ");
+                num = in.nextInt();
+
+                Movie movie = movies.get(num);
+                System.out.println("Movie: " + movie.getTitle());
+                System.out.println("");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("You have to write a number!");
+            System.out.println("");
+        } catch (Exception e) {
+            while (num > movies.size() || num < 0) {
+                System.out.println("There are no movies in that position");
+                System.out.println("");
+                
+                System.out.print("Position: ");
+                num = in.nextInt();
+
+                Movie movie = movies.get(num);
+                System.out.println("Movie: " + movie.getTitle());
+                System.out.println(""); 
+            } 
         }
-        Movie movie = movies.get(indicator);
-        return movie.getTitle();
     }
     
     public void showMovies() {
@@ -64,26 +89,26 @@ public class Billboard {
             System.out.println("Year: " + movie.getYear());
             System.out.println(""); //
         }
-    }    
+    }
     
     //Could have changes
     public boolean compareCriteria(String criteria, String parameter, Movie movie) {
         boolean isSame;
-        if (criteria == "Title") {
+        if ("Title".equals(criteria)) {
             isSame = parameter == movie.getTitle();
-        } else if (criteria == "Genre"){
+        } else if ("Genre".equals(criteria)){
             isSame = parameter == movie.getGenre();
-        } else if (criteria == "Synopsis"){
+        } else if ("Synopsis".equals(criteria)){
             isSame = parameter == movie.getSynopsis();
-        } else if (criteria == "Language"){
+        } else if ("Language".equals(criteria)){
             isSame = parameter == movie.getLanguage();
-        } else if (criteria == "Director"){
+        } else if ("Director".equals(criteria)){
             isSame = parameter == movie.getDirector();
-        } else if (criteria == "Classify"){
+        } else if ("Classify".equals(criteria)){
             isSame = parameter == movie.getClassify();
-        } else if (criteria == "Duration"){
+        } else if ("Duration".equals(criteria)){
             isSame = parameter == movie.getDuration();
-        } else if (criteria == "Year"){
+        } else if ("Year".equals(criteria)){
             isSame = parameter == movie.getYear();
         } else {
             isSame = false;
@@ -95,6 +120,7 @@ public class Billboard {
     public void searchMovieCriteria(String criteria, String parameter) {
         for (int i = 0; i < movies.size(); i++) {
             Movie actualMovie = movies.get(i);
+            
             if (compareCriteria(criteria, parameter, actualMovie)) {
                 System.out.println("Position: " + i);
                 System.out.println("Movie: " + actualMovie.getTitle());
@@ -108,5 +134,4 @@ public class Billboard {
         return "Billboard \n " + billboardTitle + "\n " +
                 "Movies: \n " + movies;
     }
-    
 }
