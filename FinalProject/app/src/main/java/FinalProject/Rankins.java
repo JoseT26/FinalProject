@@ -16,23 +16,12 @@ public class Rankins {
     ArrayList<Integer> rank = new ArrayList <Integer>();
     String movieName;
     String coment;
-    
-    public boolean validMovie(String[] movies){
-        boolean valid = false;
-        
-        for (int i = 0; i < movies.length -1; i++){
-            if (movies[i] == movieName){
-                valid = true;
-            }
-        }
-        return valid;
-    }
-    
-    public String writeComment(String comment, String[] movies){
+
+    public String writeComment(String comment, boolean valid){
         String ans;
         
-        if (validMovie(movies) == true) {
-            comments.add(comment);
+        if (valid == true) {
+            comments.add(comment + "\n");
             ans = "Your comment was wrote successfully";
         } else {
             ans = "The movie is not available yet";
@@ -40,10 +29,10 @@ public class Rankins {
         return ans;
     }
     
-    public String addRank(int ranks, String[] peliculas){
+    public String addRank(int ranks, boolean valid){
         String ans;
         
-        if (validMovie(peliculas) == true) {
+        if (valid == true) {
             rank.add(ranks);
             ans = "Your puntuation was saved successfully";
         } else {
@@ -52,15 +41,18 @@ public class Rankins {
         return ans;
     }
     
-    public void printComment(){
+    public void printComment() {
         for (int i = 0; i < comments.size(); i++){
             System.out.println(comments.get(i));
         }
     }
     
-    public void printRankin(){
+    public void printRankin() {
+        String list = "";
+        
         for (int i = 0; i < rank.size(); i++){
-            System.out.println(rank.get(i));
+            list = list + rank.get(i)+"";
+            System.out.println(list);
         }
     }
      

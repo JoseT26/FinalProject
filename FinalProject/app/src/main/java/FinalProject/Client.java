@@ -25,7 +25,6 @@ public class Client {
         System.out.println("Write your full name");
         Scanner input = new Scanner(System.in);
         name = input.nextLine();
-        
         return name;
     }
 
@@ -33,7 +32,6 @@ public class Client {
         System.out.println("Write your user name");
         Scanner input = new Scanner(System.in);
         userName = input.nextLine();
-        
         return userName;
     }
 
@@ -41,9 +39,6 @@ public class Client {
         System.out.println("Write your password");
         Scanner input = new Scanner(System.in);
         password = input.nextLine();
-        
         return password;
-    }
-    
-        
+    }    
 }
