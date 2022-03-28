@@ -53,7 +53,8 @@ public class Reservations {
     
     public char[] Ticket() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Escriba su asiento para reservar entre A1-A7 y H1-H7");
+        System.out.println("Choose a seat in this parameter");
+        System.out.println("A1-A7, B1-B7, C1-C7, D1-D7, E1-E7, F1-F7, G1-H7 and H1-H7");
         String ticket = input.nextLine();
         ticket = ticket.toUpperCase();
         //"se ingresa de A-H y un numero 1-7
@@ -115,7 +116,7 @@ public class Reservations {
                 administratorMenu();
                 userMenu();
             } else {
-                System.out.println("Enter a valid value");
+                System.out.println("Enter a valid value \n");
                 exit = true;
             }    
         } while (exit);
