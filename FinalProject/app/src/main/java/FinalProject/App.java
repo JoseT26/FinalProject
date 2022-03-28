@@ -102,8 +102,9 @@ public class App {
 
                     if ("1".equals(ans)) {
                         billboard1.getBillboardTitle();
-                        billboard1.showMovies();
                         System.out.println("");
+                        billboard1.showMovies();
+                        // System.out.println("");
                         on = true;
                     } else if ("2".equals(ans)) {
                         billboard1.getNumberMovies();
@@ -120,7 +121,7 @@ public class App {
                         String boxDuration;
                         String boxYear;
                         System.out.println("");
-                        box = in.nextLine();
+                        // box = in.nextLine();
                         
                         System.out.println("Enter the title of the movie");
                         boxTitle = in.nextLine();
@@ -186,8 +187,11 @@ public class App {
                     System.out.println("3. See all coments of a movie");
                     System.out.println("4. See all the rates of a movie");
                     System.out.println("5. Exit");
+                    
                     Scanner i = new Scanner(System.in);
+                    System.out.print("Option: ");
                     String op = i.nextLine();
+                    System.out.print("");
                     
                     if ("1".equals(op)) {
                         try {
@@ -204,7 +208,7 @@ public class App {
                         sum = comment1 + "\n" + comment2;
                         ra.writeComment(sum, billboard1.existMovie(comment1));
                         } catch(Exception e) {
-                            System.out.println("Enter a valid value");
+                            System.out.println("Enter a valid value \n");
                         }
                         exit = true;
                     } else if ("2".equals(op)){ 
@@ -221,7 +225,7 @@ public class App {
                         ra.addRank(num, billboard1.existMovie(comment1));
                         exit = true;
                         } catch (NumberFormatException e) {
-                            System.out.println("Enter a valid value");
+                            System.out.println("Enter a valid value \n");
                         }
                     } else if ("3".equals(op)) {
                         ra.printComment();
@@ -234,12 +238,13 @@ public class App {
                         administratorMenu();
                         break;
                     } else {
-                        System.out.println("Select a valid value");
+                        System.out.println("Select a valid value \n");
                         exit = true;
                     }
                 } while (exit);
                 break;
             } else if ("5".equals(opt)) {
+                active = false;
                 System.out.println("Thanks for visit us!");
                 break;
             } else {
@@ -299,8 +304,9 @@ public class App {
 
                     if ("1".equals(ans)) {
                         billboard1.getBillboardTitle();
-                        billboard1.showMovies();
                         System.out.println("");
+                        billboard1.showMovies();
+                        // System.out.println("");
                         on = true;
                     } else if ("2".equals(ans)) {
                         billboard1.getNumberMovies();
@@ -340,8 +346,11 @@ public class App {
                     System.out.println("3. See all coments of a movie");
                     System.out.println("4. See all the rates of a movie");
                     System.out.println("5. Exit");
+                    
                     Scanner i = new Scanner(System.in);
+                    System.out.print("Option: ");
                     String op = i.nextLine();
+                    System.out.print("");
                     
                     if ("1".equals(op)) {
                         try {
@@ -358,7 +367,7 @@ public class App {
                         sum = comment1 + "\n" + comment2;
                         ra.writeComment(sum, billboard1.existMovie(comment1));
                         } catch(Exception e) {
-                            System.out.println("Enter a valid value");
+                            System.out.println("Enter a valid value \n");
                         }
                         exit = true;
                     } else if ("2".equals(op)){ 
@@ -375,7 +384,7 @@ public class App {
                         ra.addRank(num, billboard1.existMovie(comment1));
                         exit = true;
                         } catch (NumberFormatException e) {
-                            System.out.println("Enter a valid value");
+                            System.out.println("Enter a valid value \n");
                         }
                     } else if ("3".equals(op)) {
                         ra.printComment();
@@ -394,6 +403,7 @@ public class App {
                 } while (exit);
                 break;
             } else if ("5".equals(opt)) {
+                active = false;
                 System.out.println("Thanks for visit us!");
                 break;
             } else {
