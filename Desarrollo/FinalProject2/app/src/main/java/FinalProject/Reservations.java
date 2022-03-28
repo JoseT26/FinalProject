@@ -51,7 +51,7 @@ public class Reservations {
     
     public char[] Ticket() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Write your seat to reserve between A1-A7 and H1-H7");
+        System.out.println("Escriba su asiento para reservar entre A1-A7 y H1-H7");
         String ticket = input.nextLine();
         ticket = ticket.toUpperCase();
         //"se ingresa de A-H y un numero 1-7
@@ -63,7 +63,7 @@ public class Reservations {
     }
     
     public String[][] reserve(String[][] Seat) { //basicamente crea un "ticket" con toda la informacion del cliente     
-        try{
+        try {
             char[] pos = Ticket();
             Client cliente = new Client(username, user, password);
             char[]abc = new char[26];
@@ -79,38 +79,42 @@ public class Reservations {
                     break;
                 }
             }
-            asiento.asignarAsiento(aux, Character.getNumericValue(pos[1]), cliente.getName());
-        }catch(Exception e){
+            asiento.assignSeat(aux, Character.getNumericValue(pos[1]), cliente.getName());
+        } catch(Exception e){
             System.out.println("Select a valid seat please");
         }
         return Seat;
     }
+    
     public void reservationMenu(){
         boolean exit = false;
-        do{
-        System.out.println("Select a option: ");
-        System.out.println("1. choose a seat");
-        System.out.println("2. see the seats");
-        System.out.println("3. exit");
         
-        Scanner input = new Scanner(System.in);
-        String option = input.nextLine();
-        if(option.equals("1")){
-            reserve(asiento.darAsientos());
-            exit = true;
-        }else{ 
-            if(option.equals("2")){
-                asiento.imprimirAsientos();
+        do {
+            System.out.println("Choose an option:");
+            System.out.println("1. See the seats");
+            System.out.println("2. Choose a seat");
+            System.out.println("3. Exit");
+            
+            Scanner input = new Scanner(System.in);
+            System.out.print("Option: ");
+            String option = input.nextLine();
+            System.out.println("");
+            
+            if (option.equals("1")) {
+                asiento.printSeats();
+                System.out.println("");
                 exit = true;
-            }else{
-                if(option.equals("3")){
-                    exit = false;
-                }else{
-                    System.out.println("select a valid value");
-                    exit = true;
-                }
+            } else if (option.equals("2")) { 
+                reserve(asiento.giveSeats());
+                System.out.println("");
+                exit = true;
+            } else if (option.equals("3")) {
+                System.out.println("");
+                exit = false;
+            } else {
+                System.out.println("Enter a valid value");
+                exit = true;
             }    
-        }
-        }while(exit);
+        } while (exit);
     }
 }
